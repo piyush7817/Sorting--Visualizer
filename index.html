@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f8ff">
+  <title>Sorting Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <div class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="brand-copy">
+        <h1>Sorting <span>Visualizer</span></h1>
+        <p>Visualize <b>·</b> Learn <b>·</b> Sort <b>·</b> Understand</p>
+      </div>
+      <div class="motto">“Small Steps<br>Big Learning” <span>♡</span></div>
+    </header>
+
+    <section class="control-card" aria-label="Sorting controls">
+      <div class="control algorithm-control">
+        <label for="algo-select">Choose Algorithm</label>
+        <select id="algo-select">
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+          <option value="heap">Heap Sort</option>
+          <option value="jump">Jump Sort</option>
+          <option value="count">Count Sort</option>
+        </select>
+      </div>
+      <div class="control range-control">
+        <label for="size-slider">Array Size: <strong><span id="size-value">50</span></strong></label>
+        <input type="range" id="size-slider" min="10" max="100" value="50" step="1">
+        <div class="range-scale"><span>10</span><span>100</span></div>
+      </div>
+      <div class="control range-control">
+        <label for="speed-slider">Speed: <strong id="speed-value">100ms</strong></label>
+        <input type="range" id="speed-slider" min="10" max="500" value="100" step="10">
+        <div class="range-scale"><span>10ms</span><span>500ms</span></div>
+      </div>
+      <fieldset class="control order-control">
+        <legend>Order</legend>
+        <label><input type="radio" name="sort-order" value="asc" checked> <span>Ascending</span></label>
+        <label><input type="radio" name="sort-order" value="desc"> <span>Descending</span></label>
+      </fieldset>
+      <div class="button-group">
+        <button id="generate" class="btn btn-generate"><span class="button-symbol">▶</span>Generate Array</button>
+        <button id="start" class="btn btn-start"><span class="button-symbol">▶</span>Start</button>
+        <button id="pause" class="btn btn-pause" aria-label="Pause sorting"><span class="button-symbol">Ⅱ</span><span class="pause-label">Pause</span></button>
+        <button id="reset" class="btn btn-reset"><span class="button-symbol">↻</span>Reset</button>
+      </div>
+    </section>
+
+    <section class="graph-card" aria-label="Sorting bar graph">
+      <div class="graph-scroll">
+        <div id="index-row" aria-hidden="true"></div>
+        <div id="value-row" role="img" aria-label="Array values displayed as a sorting bar graph"></div>
+      </div>
+      <div class="legend">
+        <span><i class="legend-swatch unsorted"></i>Unsorted</span>
+        <span><i class="legend-swatch comparing"></i>Comparing</span>
+        <span><i class="legend-swatch swapping"></i>Swapping</span>
+        <span><i class="legend-swatch sorted"></i>Sorted</span>
+        <label class="value-toggle"><input id="show-values" type="checkbox" checked> Show values</label>
+      </div>
+    </section>
+
+    <section class="lower-grid">
+      <article class="info-card">
+        <h2>Algorithm Information</h2>
+        <div class="algorithm-summary">
+          <h3 id="algorithm-name">Bubble Sort</h3>
+          <p id="algo-description"></p>
+          <div class="complexity-row"><span>Time Complexity</span><strong id="time">O(n²)</strong></div>
+          <div class="complexity-row"><span>Space Complexity</span><strong id="space">O(1)</strong></div>
+        </div>
+      </article>
+      <article class="info-card how-to-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li><span>1</span>Select a sorting algorithm from the dropdown.</li>
+          <li><span>2</span>Adjust the array size, speed, and order.</li>
+          <li><span>3</span>Click <strong>Generate Array</strong> to create a new array.</li>
+          <li><span>4</span>Press <strong>Start</strong> to watch the sorting.</li>
+          <li><span>5</span>Use <strong>Pause</strong> or <strong>Reset</strong> at any time.</li>
+        </ol>
+      </article>
+    </section>
+
+    <details class="more-tools">
+      <summary>Custom array, statistics, and algorithm steps</summary>
+      <div class="more-tools-content">
+        <div class="custom-entry">
+          <label for="custom-array">Enter whole numbers separated by commas</label>
+          <div class="custom-row"><input type="text" id="custom-array" placeholder="e.g. 5, 3, 8, 1, 2" autocomplete="off"><button id="use-custom" class="small-button">Use Custom Array</button></div>
+          <p class="reference-label">Starting array</p>
+          <div id="original-array-row" class="original-array-row" aria-label="Original array"></div>
+        </div>
+        <div class="stats-panel">
+          <div><span>Comparisons</span><strong id="comparisons">0</strong></div>
+          <div><span>Moves / Swaps</span><strong id="swaps">0</strong></div>
+        </div>
+        <pre id="algo-code" class="algo-code"></pre>
+      </div>
+    </details>
+    <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+    <footer>Made with <span class="heart">♥</span> by Team Avengers <span class="footer-divider">|</span> Interactive Sorting Algorithm Visualizer</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+
